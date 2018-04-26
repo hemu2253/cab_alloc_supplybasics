@@ -6,7 +6,7 @@ $(function() {
       // var ycord = $("#ycord").val();
       $.ajax({
         type: "POST",
-        url: "http://localhost/cab_allocation/actions/riderequest.php",
+        url: "../../actions/riderequest.php",
         //data: {identifier : customer, xcord: xcord, ycord: ycord},
         data: {identifier : customer},
         dataType: "json",

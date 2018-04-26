@@ -7,7 +7,7 @@ $(function() {
       console.log("fasdf");
       $.ajax({
         type: "POST",
-        url: "http://localhost/cab_allocation/actions/rideaccept.php",
+        url: "../../actions/rideaccept.php",
         //data: dataString,
         data: {rideid: rideid, driverid: driverid},
         dataType: "json",

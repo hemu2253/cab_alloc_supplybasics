@@ -39,7 +39,7 @@ else {
       console.log(driver)
       $.ajax({
         type: "POST",
-        url: "http://localhost/cab_allocation/actions/rides.php",
+        url: "actions/rides.php",
         //data: dataString,
         data: {id: driver},
         dataType: "json",
