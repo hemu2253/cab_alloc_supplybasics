@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Customer - Cab Allocation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/table.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/js/sort.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      // validate and process form here
+      var statusid = true;
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/cab_allocation/actions/admin.php",
+        
+        data: {status : statusid},
+        dataType: "json",
+        success: function(data) {
+          //display message back to user here
+          console.log(data);
+          var trHTML = '';
+          for(var f=0;f<data.length;f++) {
+            if(data[f].status == -1) {
+              trHTML += '<tr><td><a class="waiting">' + (f + 1) +'</a></td><td>' + data[f].start_time +'</td><td>' + data[f].cname +'</td><td>' + data[f].dname +'</td></tr>';
+            }
+            else if(data[f].status == 0) {
+              trHTML += '<tr><td><a class="ongoing">' + (f + 1) +'</a></td><td>' + data[f].start_time +'</td><td>' + data[f].cname +'</td><td>' + data[f].dname +'</td></tr>';
+            }
+            else {
+              trHTML += '<tr><td><a class="done">' + (f + 1) +'</a></td><td>' + data[f].start_time +'</td><td>' + data[f].cname +'</td><td>' + data[f].dname +'</td></tr>';
+            }
+            
+           }
+           $('#body').html(trHTML);
+        }
+      });
+      return false;
+    
+  });
+</script>
+<script type="text/javascript">
+  function show(row){
+    if(row == "all") {
+      $('tbody tr').show()   
+    }
+    else {
+      $('tbody tr').hide()   
+      $('tbody tr:has(a.'+row+')').show()
+    }
+  }
+</script>
+</head>
+<body>
+  
+<div class="header">
+  <a href="#" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a href="driverapp.php">Driver</a>
+    <a href="customerapp.html">Customer</a>
+    <a  class="active" href="#">Admin</a>
+  </div>
+</div>
+
+<div class="container">
+<button onclick='show("all")'>Show All</button>
+<button onclick='show("waiting")'>Show Waiting</button>
+<button onclick='show("ongoing")'>Show On Going</button>
+<button onclick='show("done")'>Show Done</button>
+    <table id="tablelist">
+	  <tr>
+      <thead>
+  	    <th>#</th>
+  	    <th>TimeStamp</th>
+        <th>Customer Name</th>
+        <th>Driver Name</th>
+      </thead>
+	  </tr>
+    <tbody id="body"></tbody>
+    <!-- <tr>
+      <td>Berglunds snabbkop</td>
+      <td>Canada</td>
+      <td></td>
+    </tr> -->
+	</table>
+</div>
+<!-- <script>
+  function me(no) {
+    console.log(no);
+
+  }
+</script> -->
+<script src="assets/js/driver.js"></script>
+</body>
+</html>

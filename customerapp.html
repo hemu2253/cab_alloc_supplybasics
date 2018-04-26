@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer - Cab Allocation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/form.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+</head>
+<body>
+
+<div class="header">
+  <a href="#" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a  href="driverapp.php">Driver</a>
+    <a class="active" href="#">Customer</a>
+    <a href="admin.html">Admin</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="result" style="background-color: grey;color: white"></div> 
+  <form  name="rideForm" id="rideForm" method="POST">
+    <div class="row">
+    	<h2 class="title">Booking</h2>      
+      <div class="heading">
+        <label for="identifier">Customer Identifier</label>
+      </div>
+      <div class="input">
+        <input type="number" id="identifier" value="2" min="1" max="5" name="identifier" autocomplete="off">
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="heading">
+        <label for="identifier">X Co-ordinate</label>
+      </div>
+      <div class="input">
+        <input type="number" id="xcord" value="2" name="xcord" min="0" max="5" autocomplete="off">
+      </div>
+    </div>
+    <div class="row">
+      <div class="heading">
+        <label for="identifier">Y Co-ordinate</label>
+      </div>
+      <div class="input">
+        <input type="number" id="ycord" value="2" name="ycord" min="0" max="5" autocomplete="off">
+      </div>
+    </div> -->
+    <div class="row">
+    	<div class="input">
+	      <input type="submit" class="button" id="submitButton" class="submit" value="Book a Cab" >
+	    </div>
+    </div>
+  </form>
+</div>
+<script src="assets/js/customer.js"></script>
+</body>
+</html>
